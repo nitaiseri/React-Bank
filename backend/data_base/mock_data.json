@@ -1,0 +1,27 @@
+ {
+    "user": [{"name": "Avi"}, 
+             {"name": "Beni"}], 
+    "category": [{"name": "food"}, 
+                 {"name": "clothes"}],
+    "transaction": [{"user_id": 1,
+                    "category_id": 1,
+                    "amount": -100,
+                    "vendor": "BBB"},
+                    {"user_id": 1,
+                    "category_id": 1,
+                    "amount": -50,
+                    "vendor": "BBB"},
+                    {"user_id": 1,
+                    "category_id": 1,
+                    "amount": 20,
+                    "vendor": "BBB"},
+                    {"user_id": 1,
+                    "category_id": 2,
+                    "amount": 100,
+                    "vendor": "golf"},
+                    {"user_id": 1,
+                    "category_id": 2,
+                    "amount": 80,
+                    "vendor": "fox"}
+                ]
+ }
