@@ -23,3 +23,5 @@ INSERT_INTO_USER = "INSERT INTO user(name, balance) values (%s, %s)"
 INSERT_INTO_CATEGORY = "INSERT INTO category(name) values (%s)"
 INSERT_INTO_TRANSACTION = "INSERT INTO transaction(category_id, user_id, amount, vendor) values (%s, %s, %s, %s)"
 
+SELECT_ALL_TRANSACTIONS = "SELECT * FROM transaction"
+
