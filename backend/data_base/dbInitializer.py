@@ -67,5 +67,5 @@ def add_data_to_tables():
 
 if __name__ == "__main__":
     # create_data_base(DB_NAME)
-    # create_tables()
+    create_tables()
     add_data_to_tables()

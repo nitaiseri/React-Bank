@@ -12,7 +12,8 @@ drop table user;
 
 -- CREATE TABLE user(
 --     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     name VARCHAR(20)
+--     name VARCHAR(20),
+--     balance float
 -- );
 
 -- CREATE TABLE transaction(

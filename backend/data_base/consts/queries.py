@@ -5,7 +5,8 @@ CREATE_CATEGORY_TABLE = "CREATE TABLE category(\
 
 CREATE_USER_TABLE = "CREATE TABLE user(\
     user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,\
-    name VARCHAR(20)\
+    name VARCHAR(20),\
+    balance float\
 );"
 
 CREATE_TRANSACTION_TABLE = "CREATE TABLE transaction(\
@@ -18,7 +19,7 @@ CREATE_TRANSACTION_TABLE = "CREATE TABLE transaction(\
     FOREIGN KEY(user_id) REFERENCES user(user_id)\
 );"
 
-INSERT_INTO_USER = "INSERT INTO user(name) values (%s)"
+INSERT_INTO_USER = "INSERT INTO user(name, balance) values (%s, %s)"
 INSERT_INTO_CATEGORY = "INSERT INTO category(name) values (%s)"
 INSERT_INTO_TRANSACTION = "INSERT INTO transaction(category_id, user_id, amount, vendor) values (%s, %s, %s, %s)"
 

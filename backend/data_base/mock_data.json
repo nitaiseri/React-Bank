@@ -1,6 +1,8 @@
  {
-    "user": [{"name": "Avi"}, 
-             {"name": "Beni"}], 
+    "user": [{"name": "Avi", 
+              "balance": 1200}, 
+             {"name": "Beni", 
+             "balance": 100}], 
     "category": [{"name": "food"}, 
                  {"name": "clothes"}],
     "transaction": [{"user_id": 1,
