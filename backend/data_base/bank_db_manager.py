@@ -1,7 +1,7 @@
 import pymysql
-from consts.data_base_consts import *
-from consts.queries import *
-from abstract_bank_dm import AbstractBankDM
+from data_base.consts.data_base_consts import *
+from data_base.consts.queries import *
+from data_base.abstract_bank_dm import AbstractBankDM
 
 
 class DBException(Exception):
@@ -103,4 +103,4 @@ class Bank_DB_Manager(AbstractBankDM):
         return int(balance.get("balance"))
 
 bank_db_manager = Bank_DB_Manager()
-print(bank_db_manager.get_balance_of_user(3))
+# print(bank_db_manager.get_balance_of_user(3))

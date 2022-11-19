@@ -3,14 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import uvicorn
 from routers import transactions_router, users_router
-from data_base.bank_db_manager import Bank_DB_Manager
+from data_base.bank_db_manager import bank_db_manager
 
 app = FastAPI()
 app.include_router(transactions_router.router)
 app.include_router(users_router.router)
-
-bank_db_manager = Bank_DB_Manager()
-
 origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 import requests
-from server import bank_db_manager
+from data_base.bank_db_manager import bank_db_manager
 from data_base.bank_db_manager import DBNoData
 
 router = APIRouter()
