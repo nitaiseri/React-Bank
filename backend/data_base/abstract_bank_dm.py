@@ -25,3 +25,7 @@ class AbstractBankDM(ABC):
     @abstractmethod
     def get_breakdown_by_category(self):
         pass
+
+    @abstractmethod
+    def get_balance_of_user(self, user_id):
+        pass

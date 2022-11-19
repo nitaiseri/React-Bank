@@ -6,9 +6,10 @@ from routers import transactions_router, users_router
 from data_base.bank_db_manager import Bank_DB_Manager
 
 app = FastAPI()
-bank_db_manager = Bank_DB_Manager()
 app.include_router(transactions_router.router)
 app.include_router(users_router.router)
+
+bank_db_manager = Bank_DB_Manager()
 
 origins = [
     "http://localhost.tiangolo.com",

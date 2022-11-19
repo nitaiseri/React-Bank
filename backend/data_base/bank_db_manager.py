@@ -93,5 +93,14 @@ class Bank_DB_Manager(AbstractBankDM):
             cursor.execute(SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY)
             return cursor.fetchall()
 
+    def get_balance_of_user(self, user_id):
+        self._verify_connection()
+        with self.connection.cursor() as cursor:
+            cursor.execute(GET_BALANCE_OF_USER_BY_ID.format(id=user_id))
+            balance = cursor.fetchone()
+        if balance is None:
+            raise DBNoData(f"There is no user with {user_id} as id.")
+        return int(balance.get("balance"))
+
 bank_db_manager = Bank_DB_Manager()
-print(bank_db_manager.get_breakdown_by_category())
+print(bank_db_manager.get_balance_of_user(3))

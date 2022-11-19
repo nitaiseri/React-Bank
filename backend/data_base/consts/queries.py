@@ -37,3 +37,5 @@ SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY = "SELECT name, sum\
             FROM(SELECT category_id as c_id, SUM(amount) as sum FROM transaction GROUP BY category_id) as c_s JOIN\
             category as c\
             WHERE category_id = c_id"
+
+GET_BALANCE_OF_USER_BY_ID = "SELECT balance FROM user WHERE user_id={id}"
