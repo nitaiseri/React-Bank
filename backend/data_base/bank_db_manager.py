@@ -1,6 +1,7 @@
 import pymysql
-from data_base.consts.data_base_consts import *
-from data_base.consts.queries import *
+from consts.data_base_consts import *
+from consts.queries import *
+from abstract_bank_dm import AbstractBankDM
 
 
 class DBException(Exception):
@@ -15,7 +16,7 @@ class DBNoData(DBException):
     pass
 
 
-class Bank_DB_Manager:
+class Bank_DB_Manager(AbstractBankDM):
     def __init__(self):
         self.connection = None
         self._initialize_connection()
@@ -93,4 +94,4 @@ class Bank_DB_Manager:
             return cursor.fetchall()
 
 bank_db_manager = Bank_DB_Manager()
-# print(db_manager.get_breakdown_by_category())
+print(bank_db_manager.get_breakdown_by_category())
