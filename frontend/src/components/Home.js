@@ -5,7 +5,6 @@ import Header from './Header';
 
 function Home(props) {
 
-
     return (
         <div className='home-container'>
             <Header userId={props.userId}></Header>

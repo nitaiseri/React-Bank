@@ -11,7 +11,6 @@ def get_user_info(user_id):
         user_id = int(user_id)
         userInfo = bank_db_manager.get_user_info(user_id)  
         return userInfo
-
     except DBNoData as e:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

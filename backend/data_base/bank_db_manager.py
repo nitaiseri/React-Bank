@@ -100,8 +100,8 @@ class Bank_DB_Manager(AbstractBankDM):
             cursor.execute(GET_BALANCE_OF_USER_BY_ID.format(id=user_id))
             balance = cursor.fetchone()
         if balance is None:
-            raise DBNoData(f"There is no user with {user_id} as id.")
-        return int(balance.get("balance"))
+            raise DBNoData(NO_USER_MESSAGE.format(user_id=user_id))
+        return float(balance.get("balance"))
 
     def get_user_info(self, user_id):
         self._verify_connection()
@@ -109,9 +109,8 @@ class Bank_DB_Manager(AbstractBankDM):
             cursor.execute(GET_USER_BY_ID.format(id=user_id))
             user_info = cursor.fetchone()
         if user_info is None:
-            raise DBNoData(f"There is no user with {user_id} as id.")
+            raise DBNoData(NO_USER_MESSAGE.format(user_id=user_id))
         return User(user_info)
 
 
 bank_db_manager = Bank_DB_Manager()
-# print(bank_db_manager.get_balance_of_user(3))
