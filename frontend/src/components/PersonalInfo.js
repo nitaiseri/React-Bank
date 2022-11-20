@@ -7,11 +7,15 @@ function PersonalInfo(props) {
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/user/${props.userId}`).then((result) => {
+        const getUser = async () => {
+            const result = await axios.get(`http://localhost:8000/user/${props.userId}`)
             setUser(new User(result.data))
+                console.log("inner")
+            }
+            getUser();
         }, [])
-    })
 
+    console.log("Header")
     return (
         <span>
             Hello {user.name}! Balance: {user.balance}$
