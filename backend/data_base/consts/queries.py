@@ -39,3 +39,5 @@ SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY = "SELECT name, sum\
             WHERE category_id = c_id"
 
 GET_BALANCE_OF_USER_BY_ID = "SELECT balance FROM user WHERE user_id={id}"
+
+GET_USER_BY_ID = "SELECT * FROM user WHERE user_id={id}"

@@ -2,6 +2,7 @@ import pymysql
 from data_base.consts.data_base_consts import *
 from data_base.consts.queries import *
 from data_base.abstract_bank_dm import AbstractBankDM
+from data_base.models.user import User
 
 
 class DBException(Exception):
@@ -101,6 +102,16 @@ class Bank_DB_Manager(AbstractBankDM):
         if balance is None:
             raise DBNoData(f"There is no user with {user_id} as id.")
         return int(balance.get("balance"))
+
+    def get_user_info(self, user_id):
+        self._verify_connection()
+        with self.connection.cursor() as cursor:
+            cursor.execute(GET_USER_BY_ID.format(id=user_id))
+            user_info = cursor.fetchone()
+        if user_info is None:
+            raise DBNoData(f"There is no user with {user_id} as id.")
+        return User(user_info)
+
 
 bank_db_manager = Bank_DB_Manager()
 # print(bank_db_manager.get_balance_of_user(3))

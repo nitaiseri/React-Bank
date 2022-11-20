@@ -1,24 +1,23 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { useState } from 'react';
+import Transatcions from "./components/Transactions"
+import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
+  const [userId, setUserId] = useState(1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header userId={userId}></Header>
+
+      <div className="App">
+        <Route path="/" exact component={() => <Home userId={userId} />} />
+        <Route path="/transactions" exact component={() => <Transatcions userId={userId} />} />
+        <Route path="/operations" exact component={() => <Home userId={userId} />} />
+        <Route path="/breakdown" exact component={() => <Home userId={userId} />} />
+      </div>
+    </Router>
   );
 }
 
