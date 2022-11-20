@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Header from './Header';
+
 
 function Home(props) {
+
+
     return (
-        <div>
-            
+        <div className='home-container'>
+            <Header userId={props.userId}></Header>
         </div>
     );
 }
