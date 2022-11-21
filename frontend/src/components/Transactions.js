@@ -13,7 +13,6 @@ function Transatcions(props) {
         axios.get(`http://localhost:8000/transaction/${props.user.id}`)
             .then((result) => {
                 setTransactions(result.data.map(r => new TransactionModel(r)))
-                console.log("inner")
             })
             .catch()
     }

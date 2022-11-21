@@ -41,7 +41,6 @@ class Bank_DB_Manager(AbstractBankDM):
             self._initialize_connection()
 
     def get_transactions_by_user_id(self, user_id):
-        print("transaction")
         self._verify_connection()
         with self.connection.cursor() as cursor:
             cursor.execute(SELECT_ALL_TRANSACTIONS.format(user_id=user_id))
@@ -108,7 +107,6 @@ class Bank_DB_Manager(AbstractBankDM):
         return float(balance.get("balance"))
 
     def get_user_info(self, user_id):
-        print("user")
         self._verify_connection()
         with self.connection.cursor() as cursor:
             cursor.execute(GET_USER_BY_ID.format(id=user_id))

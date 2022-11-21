@@ -4,7 +4,6 @@ import Balance from './Balance';
 
 
 function Header(props) {
-    console.log("header")
     return (
         <div className='header'>
             <span id="main-links">
