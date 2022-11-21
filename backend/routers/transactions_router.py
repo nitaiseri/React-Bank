@@ -49,4 +49,12 @@ def delete_transactoin_from_user(transaction_id):
 
 @router.get("/transaction/breakdown/{user_id}", status_code=200)
 def get_breakdown_for_user(user_id):
-    pass
+    try:
+        user_id = int(user_id)
+        raw_breakdown = bank_db_manager.get_breakdown_by_category(user_id)
+        return raw_breakdown
+    except DBNoData as e:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Exeception occured:{}".format(e)
+        )

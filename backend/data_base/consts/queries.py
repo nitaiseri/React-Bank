@@ -35,7 +35,7 @@ SELECT_CATEGORY_ID_BY_NAME = "SELECT category_id FROM category WHERE name='{name
 
 DELETE_TRANSACTION_BY_ID = "DELETE FROM transaction WHERE transaction_id={transaction_id}"
 
-SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY = "SELECT name, sum\
+SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY = "SELECT name as category, sum\
             FROM(SELECT category_id as c_id, SUM(amount) as sum FROM transaction GROUP BY category_id) as c_s JOIN\
             category as c\
             WHERE category_id = c_id"

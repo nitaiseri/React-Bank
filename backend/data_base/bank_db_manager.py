@@ -91,7 +91,7 @@ class Bank_DB_Manager(AbstractBankDM):
                 transaction_id=transaction_id))
             self.connection.commit()
 
-    def get_breakdown_by_category(self):
+    def get_breakdown_by_category(self, user_id):
         self._verify_connection()
         with self.connection.cursor() as cursor:
             cursor.execute(SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY)

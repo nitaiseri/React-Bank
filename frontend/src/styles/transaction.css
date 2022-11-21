@@ -12,7 +12,7 @@
     border-radius: 10px;
 }
 
-button{
+.card-body > button{
     background-color: lightcoral;
 }
 

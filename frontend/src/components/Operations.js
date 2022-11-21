@@ -44,7 +44,6 @@ function Operations(props) {
             )
     }
 
-
     return (
         <div>
             <Header balance={props.user.balance}></Header>
@@ -59,8 +58,8 @@ function Operations(props) {
                             {categories.map((c, i) => <option key={i}>{c}</option>)}
                         </Form.Select>
                         <ButtonGroup aria-label="Basic example">
-                            <Button variant="secondary" onClick={addWithdraw}>Withdraw</Button>
-                            <Button variant="secondary" onClick={addDeposit}>deposit</Button>
+                            <Button className='withdraw' onClick={addWithdraw}>Withdraw</Button>
+                            <Button className='depoist' onClick={addDeposit}>deposit</Button>
                         </ButtonGroup>
                     </Card.Body>
                 </Card>
