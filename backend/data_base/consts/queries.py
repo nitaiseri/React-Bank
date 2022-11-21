@@ -25,7 +25,9 @@ INSERT_INTO_TRANSACTION = "INSERT INTO transaction(user_id, category_id, amount,
 
 INSERT_NEW_TRANSACTION = "INSERT INTO transaction(user_id, category_id, amount, vendor) values ({user_id}, {category_id}, {amount}, '{vendor}')"
 
-SELECT_ALL_TRANSACTIONS = "SELECT * FROM transaction WHERE user_id={user_id}"
+SELECT_ALL_TRANSACTIONS = "SELECT transaction_id, amount, vendor, name as category\
+        FROM transaction as t JOIN category as c\
+        WHERE t.user_id={user_id} and t.category_id = c.category_id "
 
 SELECT_TRANSACTION_BY_ID = "SELECT * FROM transaction WHERE transaction_id={transaction_id}"
 
@@ -41,3 +43,7 @@ SELECT_TRANSACTION_BREAKDOWN_BY_CATEGORY = "SELECT name, sum\
 GET_BALANCE_OF_USER_BY_ID = "SELECT balance FROM user WHERE user_id={id}"
 
 GET_USER_BY_ID = "SELECT * FROM user WHERE user_id={id}"
+
+SET_USER_BALANCE = "UPDATE user\
+                    SET balance = {balance}\
+                    WHERE user_id={id};"

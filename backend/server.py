@@ -1,11 +1,19 @@
 from asyncio import events
-from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 import uvicorn
 from routers import transactions_router, users_router
 from data_base.bank_db_manager import bank_db_manager
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"],
+)
 app.include_router(transactions_router.router)
 app.include_router(users_router.router)
 origins = [
@@ -13,13 +21,6 @@ origins = [
     "http://localhost:3000",
 ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 @app.get("/sanity")
 def root():

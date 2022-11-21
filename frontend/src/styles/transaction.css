@@ -1,0 +1,25 @@
+.transaction-card{
+    border: solid 2px black;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+button{
+    background-color: lightcoral;
+}
+
+.withdraw{
+    background-color: red;
+}
+
+.depoist{
+    background-color: green;
+}

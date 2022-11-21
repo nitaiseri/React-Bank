@@ -1,8 +1,8 @@
 use bank_app;
 
--- drop table transaction;
--- drop table category;
--- drop table user;
+drop table transaction;
+drop table category;
+drop table user;
 
 
 -- CREATE TABLE category(
@@ -30,3 +30,9 @@ use bank_app;
 -- FROM(SELECT category_id as c_id, SUM(amount) as sum FROM transaction GROUP BY category_id) as c_s JOIN
 -- category as c
 -- WHERE category_id = c_id
+-- SELECT transaction_id, amount, vendor, name as category
+-- FROM transaction as t JOIN category as c
+-- WHERE t.user_id=1 and t.category_id = c.category_id 
+-- UPDATE user
+-- SET balance = 1000
+-- WHERE user_id=3;

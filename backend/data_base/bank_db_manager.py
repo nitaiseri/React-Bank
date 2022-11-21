@@ -3,6 +3,7 @@ from data_base.consts.data_base_consts import *
 from data_base.consts.queries import *
 from data_base.abstract_bank_dm import AbstractBankDM
 from data_base.models.user import User
+from data_base.models.transaction import Transaction
 
 
 class DBException(Exception):
@@ -33,16 +34,19 @@ class Bank_DB_Manager(AbstractBankDM):
 
     def _verify_connection(self):
         try:
+            self.connection.ping()
             if not self.connection.open:
                 raise DBNoConnection
         except (DBNoConnection, AttributeError) as e:
             self._initialize_connection()
 
     def get_transactions_by_user_id(self, user_id):
+        print("transaction")
         self._verify_connection()
         with self.connection.cursor() as cursor:
             cursor.execute(SELECT_ALL_TRANSACTIONS.format(user_id=user_id))
-            return cursor.fetchall()
+            results = cursor.fetchall()
+        return [Transaction(**res) for res in results]
 
     def _get_category_id(self, category_name):
         self._verify_connection()
@@ -104,6 +108,7 @@ class Bank_DB_Manager(AbstractBankDM):
         return float(balance.get("balance"))
 
     def get_user_info(self, user_id):
+        print("user")
         self._verify_connection()
         with self.connection.cursor() as cursor:
             cursor.execute(GET_USER_BY_ID.format(id=user_id))
@@ -111,6 +116,12 @@ class Bank_DB_Manager(AbstractBankDM):
         if user_info is None:
             raise DBNoData(NO_USER_MESSAGE.format(user_id=user_id))
         return User(user_info)
-
+    
+    def set_balance_of_user(self, user_id, new_balance):
+        self._verify_connection()
+        with self.connection.cursor() as cursor:
+            result = cursor.execute(SET_USER_BALANCE.format(id=user_id, balance=new_balance))
+            self.connection.commit()
+        return result
 
 bank_db_manager = Bank_DB_Manager()
